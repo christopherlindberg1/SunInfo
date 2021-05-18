@@ -12,7 +12,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -21,12 +20,12 @@
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.ColumnSpan="3" Margin="0 0 0 15">
+        <StackPanel Grid.ColumnSpan="2" Margin="0 0 0 15">
             <TextBlock Text="Sun Info" FontSize="40" HorizontalAlignment="Center"/>
         </StackPanel>
 
         <!--User input -->
-        <StackPanel Grid.Row="1" Margin="10 0">
+        <StackPanel Grid.Row="1" Margin="10 0 25 0">
             <TextBlock Text="Specify a location and date"  FontSize="24" TextWrapping="Wrap"/>
 
             <StackPanel Margin="0 15 0 0">
@@ -45,13 +44,21 @@
             </StackPanel>
 
             <StackPanel Margin="0 15 0 0">
-                <Button Content="Get Sun Info" BorderThickness="0" FontSize="16" Padding="10" />
+                <Button x:Name="btnGetSunInfo" Click="btnGetSunInfo_Click" Content="Get Sun Info" BorderThickness="0" FontSize="16" Padding="10" />
             </StackPanel>
         </StackPanel>
 
         <!--Results-->
-        <StackPanel Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="10 0" >
-            
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="25 0 10 0" >
+            <TextBlock Text="Results"  FontSize="24" TextWrapping="Wrap"/>
+
+            <StackPanel Margin="0 15 0 0">
+                <TextBlock x:Name="textBlockSunrise" Text="Sunrise:" FontSize="16" />
+            </StackPanel>
+
+            <StackPanel Margin="0 15 0 0">
+                <TextBlock x:Name="textBlockSunset" Text="Sunset:" FontSize="16" />
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>
