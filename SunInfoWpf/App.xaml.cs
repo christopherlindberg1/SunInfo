@@ -29,6 +29,7 @@ namespace SunInfoWpf
             services.AddSingleton<MainWindow>();
             services.AddSingleton<ILatitudeValidator, LatitudeValidator>();
             services.AddSingleton<ILongitudeValidator, LongitudeValidator>();
+            services.AddSingleton<IErrorMessageHandler, ErrorMessageHandler>();
         }
 
         private void OnStartup(object sender, StartupEventArgs e)
