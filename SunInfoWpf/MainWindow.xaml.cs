@@ -35,16 +35,20 @@ namespace SunInfoWpf
 
         private bool ValidateUserInput()
         {
+            bool latitudeOk = ValidateLatitude();
+            bool longitudeOk = ValidateLongitude();
 
+            return latitudeOk && longitudeOk;
+        }
 
-            return true;
+        private bool ValidateLatitude()
+        {
+            return _latitudeValidator.IsValidLatitude(textBoxLatitude.Text);
         }
 
         private bool ValidateLongitude()
         {
-
-
-            return true;
+            return _longitudeValidator.IsValidLongitude(textBoxLongitude.Text);
         }
 
         private void btnGetSunInfo_Click(object sender, RoutedEventArgs e)
