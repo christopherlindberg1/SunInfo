@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
+using CoreLibrary;
 
 namespace SunInfoWpf
 {
@@ -21,11 +22,15 @@ namespace SunInfoWpf
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private ILatitudeValidator _latitudeValidator;
+        private ILongitudeValidator _longitudeValidator;
+
+        public MainWindow(ILatitudeValidator latValidator, ILongitudeValidator longValidator)
         {
             InitializeComponent();
 
-            //Close();
+            _latitudeValidator = latValidator;
+            _longitudeValidator = longValidator;
         }
 
         private bool ValidateUserInput()
