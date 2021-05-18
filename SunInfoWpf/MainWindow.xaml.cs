@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Text.RegularExpressions;
 
 namespace SunInfoWpf
 {
@@ -23,6 +24,27 @@ namespace SunInfoWpf
         public MainWindow()
         {
             InitializeComponent();
+
+            //Close();
+        }
+
+        private bool ValidateUserInput()
+        {
+
+
+            return true;
+        }
+
+        private bool ValidateLongitude()
+        {
+
+
+            return true;
+        }
+
+        private void btnGetSunInfo_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
