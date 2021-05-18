@@ -48,19 +48,39 @@ namespace SunInfoWpf
 
         private bool ValidateLatitude()
         {
-            return _latitudeValidator.IsValidLatitude(textBoxLatitude.Text);
+            bool isValid = _latitudeValidator.IsValidLatitude(textBoxLatitude.Text);
+
+            if (isValid == false)
+            {
+                _errorMessageHandler.AddMessage("Invalid latitude.");
+            }
+
+            return isValid;
         }
 
         private bool ValidateLongitude()
         {
-            return _longitudeValidator.IsValidLongitude(textBoxLongitude.Text);
+            bool isValid = _longitudeValidator.IsValidLongitude(textBoxLongitude.Text);
+
+            if (isValid == false)
+            {
+                _errorMessageHandler.AddMessage("Invalid longitude.");
+            }
+
+            return isValid;
         }
 
         private void btnGetSunInfo_Click(object sender, RoutedEventArgs e)
         {
             if (ValidateUserInput() == false)
             {
-                MessageBox.Show(, "Info")
+                MessageBox.Show(
+                    _errorMessageHandler.GetMessages(),
+                    "Info",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Information);
+
+                return;
             }
         }
     }
