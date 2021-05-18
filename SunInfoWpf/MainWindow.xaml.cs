@@ -24,13 +24,18 @@ namespace SunInfoWpf
     {
         private ILatitudeValidator _latitudeValidator;
         private ILongitudeValidator _longitudeValidator;
+        private IErrorMessageHandler _errorMessageHandler;
 
-        public MainWindow(ILatitudeValidator latValidator, ILongitudeValidator longValidator)
+        public MainWindow(
+            ILatitudeValidator latValidator,
+            ILongitudeValidator longValidator,
+            IErrorMessageHandler errorMessageHandler)
         {
             InitializeComponent();
 
             _latitudeValidator = latValidator;
             _longitudeValidator = longValidator;
+            _errorMessageHandler = errorMessageHandler;
         }
 
         private bool ValidateUserInput()
@@ -53,7 +58,10 @@ namespace SunInfoWpf
 
         private void btnGetSunInfo_Click(object sender, RoutedEventArgs e)
         {
-
+            if (ValidateUserInput() == false)
+            {
+                MessageBox.Show(, "Info")
+            }
         }
     }
 }
