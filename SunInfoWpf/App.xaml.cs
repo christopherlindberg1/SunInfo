@@ -30,5 +30,11 @@ namespace SunInfoWpf
             services.AddSingleton<ILatitudeValidator, LatitudeValidator>();
             services.AddSingleton<ILongitudeValidator, LongitudeValidator>();
         }
+
+        private void OnStartup(object sender, StartupEventArgs e)
+        {
+            MainWindow mainWindow = _serviceProvider.GetService<MainWindow>();
+            mainWindow.Show();
+        }
     }
 }
