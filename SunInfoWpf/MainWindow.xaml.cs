@@ -28,24 +28,22 @@ namespace SunInfoWpf
         private ILongitudeValidator _longitudeValidator;
         private IErrorMessageHandler _errorMessageHandler;
         //private IApiHelper _apiHelper;
-        //private ISunApiClient _sunApiClient;
+        private ISunApiClient _sunApiClient;
 
         public SunDataModel SunDataModel { get; set; }
 
         public MainWindow(
             ILatitudeValidator latValidator,
             ILongitudeValidator longValidator,
-            IErrorMessageHandler errorMessageHandler)
-            //IApiHelper apiHelper,
-            //ISunApiClient sunApiClient)
+            IErrorMessageHandler errorMessageHandler,
+            ISunApiClient sunApiClient)
         {
             InitializeComponent();
 
             _latitudeValidator = latValidator;
             _longitudeValidator = longValidator;
             _errorMessageHandler = errorMessageHandler;
-            //_apiHelper = apiHelper;
-            //_sunApiClient = sunApiClient;
+            _sunApiClient = sunApiClient;
 
             InitializeGui();
         }
@@ -127,11 +125,7 @@ namespace SunInfoWpf
 
             ShowLoadingAnimation();
 
-            // Temporary solution, use DI instead
-            IApiHelper apiHelper = new ApiHelper();
-            ISunApiClient sunApiClient = new SunApiClient(apiHelper);
-
-            SunDataModel = await sunApiClient.GetSunInformation(
+            SunDataModel = await _sunApiClient.GetSunInformation(
                 textBoxLatitude.Text,
                 textBoxLongitude.Text,
                 datePickerDate.SelectedDate);
