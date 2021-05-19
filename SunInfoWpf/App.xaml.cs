@@ -6,6 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using CoreLibrary;
+using CoreLibrary.ApiClients;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace SunInfoWpf
@@ -17,6 +18,7 @@ namespace SunInfoWpf
     {
         private IServiceProvider _serviceProvider;
 
+
         public App()
         {
             IServiceCollection services = new ServiceCollection();
@@ -27,6 +29,8 @@ namespace SunInfoWpf
         private void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton<MainWindow>();
+            services.AddSingleton<IApiHelper, ApiHelper>();
+            services.AddSingleton<ISunApiClient, SunApiClient>();
             services.AddSingleton<ILatitudeValidator, LatitudeValidator>();
             services.AddSingleton<ILongitudeValidator, LongitudeValidator>();
             services.AddSingleton<IErrorMessageHandler, ErrorMessageHandler>();
