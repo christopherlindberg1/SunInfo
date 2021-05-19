@@ -4,6 +4,14 @@
              xmlns:local="clr-namespace:SunInfoWpf"
              Startup="OnStartup">
     <Application.Resources>
-         
+
+        <Style TargetType="Button" x:Key="buttonNoBorder">
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+        
+        <Style TargetType="Button" x:Key="buttonBlueNoBorder" BasedOn="{ StaticResource buttonNoBorder }">
+            <Setter Property="Background" Value="DodgerBlue" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
     </Application.Resources>
 </Application>
