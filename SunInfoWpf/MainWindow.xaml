@@ -58,7 +58,7 @@
                                 By giving access to your physical location you will get data for where you are.
                             </TextBlock>
                             <Button x:Name="btnGetGeoLocation" Click="btnGetGeoLocation_Click"
-                                    Content="Get My Location" FontSize="14" Padding="5" BorderThickness="0" />
+                                    Content="Get My Location" Style="{ StaticResource buttonBlueNoBorder }" FontSize="14" Padding="5" />
                         </StackPanel>
                     </StackPanel>
                 </TabItem>
@@ -71,7 +71,8 @@
             </StackPanel>
 
             <StackPanel Margin="0 15 0 0">
-                <Button x:Name="btnGetSunInfo" Click="btnGetSunInfo_Click" Content="Get Sun Info" BorderThickness="0" FontSize="16" Padding="10" />
+                <Button x:Name="btnGetSunInfo" Click="btnGetSunInfo_Click" Content="Get Sun Info"
+                        Style="{ StaticResource buttonBlueNoBorder }" FontSize="16" Padding="10" />
             </StackPanel>
         </StackPanel>
 
