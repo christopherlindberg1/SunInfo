@@ -6,7 +6,7 @@ using System.Text;
 
 namespace CoreLibrary.ApiClients
 {
-    public class ApiHelper
+    public class ApiHelper : IApiHelper
     {
         public HttpClient HttpClient { get; set; }
 
