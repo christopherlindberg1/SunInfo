@@ -12,6 +12,11 @@ namespace CoreLibrary.ApiClients
 
         public ApiHelper()
         {
+            ConfigureHttpClient();
+        }
+
+        private void ConfigureHttpClient()
+        {
             HttpClient = new HttpClient();
 
             HttpClient.DefaultRequestHeaders.Accept.Clear();
