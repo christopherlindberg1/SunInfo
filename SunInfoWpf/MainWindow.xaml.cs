@@ -46,6 +46,13 @@ namespace SunInfoWpf
             _errorMessageHandler = errorMessageHandler;
             //_apiHelper = apiHelper;
             //_sunApiClient = sunApiClient;
+
+            InitializeGui();
+        }
+
+        private void InitializeGui()
+        {
+            HideLoadingAnimation();
         }
 
         private bool ValidateUserInput()
@@ -54,7 +61,7 @@ namespace SunInfoWpf
             bool longitudeOk = ValidateLongitude();
             bool dateOk = ValidateDate();
 
-            return latitudeOk && longitudeOk && ValidateDate();
+            return latitudeOk && longitudeOk && dateOk;
         }
 
         private bool ValidateLatitude()
@@ -87,6 +94,18 @@ namespace SunInfoWpf
             return true;
         }
 
+        private void ShowLoadingAnimation()
+        {
+            stackPanelLoadingAnimation.Visibility = Visibility.Visible;
+            stackPanelResults.Visibility = Visibility.Collapsed;
+        }
+
+        private void HideLoadingAnimation()
+        {
+            stackPanelLoadingAnimation.Visibility = Visibility.Collapsed;
+            stackPanelResults.Visibility = Visibility.Visible;
+        }
+
         private void DisplaySunInfo(SunDataModel sunDataModel)
         {
             textBlockSunrise.Text = $"{ SunDataModel.Sunrise.ToLongTimeString() } UTC";
@@ -106,6 +125,9 @@ namespace SunInfoWpf
                 return;
             }
 
+            ShowLoadingAnimation();
+
+            // Temporary solution, use DI instead
             IApiHelper apiHelper = new ApiHelper();
             ISunApiClient sunApiClient = new SunApiClient(apiHelper);
 
@@ -115,6 +137,7 @@ namespace SunInfoWpf
                 datePickerDate.SelectedDate);
 
             DisplaySunInfo(SunDataModel);
+            HideLoadingAnimation();
         }
 
         private void btnGetGeoLocation_Click(object sender, RoutedEventArgs e)
