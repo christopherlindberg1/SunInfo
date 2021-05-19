@@ -28,15 +28,42 @@
         <StackPanel Grid.Row="1" Margin="10 0 25 0">
             <TextBlock Text="Specify a location and date"  FontSize="24" TextWrapping="Wrap"/>
 
-            <StackPanel Margin="0 15 0 0">
-                <TextBlock Text="Latitude" FontSize="16" Margin="0 0 0 5"/>
-                <TextBox x:Name="textBoxLatitude" FontSize="14" />
-            </StackPanel>
+            <TabControl Grid.IsSharedSizeScope="True" Margin="0 15 0 0">
+                <TabItem>
+                    <TabItem.Header>
+                        <TextBlock>Specify coordinates</TextBlock>
+                    </TabItem.Header>
+                    
+                    <StackPanel Margin="0 15 0 0">
+                        <StackPanel>
+                            <TextBlock Text="Latitude" FontSize="16" Margin="0 0 0 5"/>
+                            <TextBox x:Name="textBoxLatitude" FontSize="14" />
+                        </StackPanel>
 
-            <StackPanel Margin="0 15 0 0">
-                <TextBlock Text="Longitude" FontSize="16" Margin="0 0 0 5"/>
-                <TextBox x:Name="textBoxLongitude" FontSize="14" />
-            </StackPanel>
+                        <StackPanel Margin="0 15 0 0">
+                            <TextBlock Text="Longitude" FontSize="16" Margin="0 0 0 5"/>
+                            <TextBox x:Name="textBoxLongitude" FontSize="14" />
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem>
+                    <TabItem.Header>
+                        <TextBlock>Use your location</TextBlock>
+                    </TabItem.Header>
+
+                    <StackPanel Margin="0 15 0 0">
+                        <StackPanel>
+                            <TextBlock Margin="0 0 0 15" TextWrapping="Wrap" FontSize="16">
+                                By giving access to your physical location you will get data for where you are.
+                            </TextBlock>
+                            <Button x:Name="btnGetGeoLocation" Click="btnGetGeoLocation_Click"
+                                    Content="Get My Location" FontSize="14" Padding="5" BorderThickness="0" />
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+            
 
             <StackPanel Margin="0 15 0 0">
                 <TextBlock Text="Date (optional)" FontSize="16" Margin="0 0 0 5"/>
