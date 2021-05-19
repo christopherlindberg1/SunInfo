@@ -79,12 +79,14 @@
         <StackPanel Grid.Row="1" Grid.Column="1" Margin="25 0 10 0" >
             <TextBlock Text="Results"  FontSize="24" TextWrapping="Wrap"/>
 
-            <StackPanel Margin="0 15 0 0">
-                <TextBlock x:Name="textBlockSunrise" Text="Sunrise:" FontSize="16" />
+            <StackPanel Margin="0 15 0 0" Orientation="Horizontal">
+                <TextBlock Text="Sunrise: " FontSize="16" />
+                <TextBlock x:Name="textBlockSunrise" Text="" FontSize="16" />
             </StackPanel>
 
-            <StackPanel Margin="0 15 0 0">
-                <TextBlock x:Name="textBlockSunset" Text="Sunset:" FontSize="16" />
+            <StackPanel Margin="0 15 0 0" Orientation="Horizontal">
+                <TextBlock Text="Sunset: " FontSize="16" />
+                <TextBlock x:Name="textBlockSunset" Text="" FontSize="16" />
             </StackPanel>
         </StackPanel>
     </Grid>
