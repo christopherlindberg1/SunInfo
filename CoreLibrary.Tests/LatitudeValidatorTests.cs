@@ -64,5 +64,33 @@ namespace CoreLibrary.Tests
             // Assert
             Assert.Equal(expected, actual);
         }
+
+        [Theory]
+        [InlineData("90")]
+        [InlineData("90.0")]
+        [InlineData("-90")]
+        [InlineData("-90.0")]
+        [InlineData("0")]
+        [InlineData("-0")]
+        [InlineData("0.0")]
+        [InlineData("-0.0")]
+        [InlineData("10")]
+        [InlineData("-10")]
+        [InlineData("10.0")]
+        [InlineData("-10.0")]
+        [InlineData("10.1546")]
+        [InlineData("-10.1546")]
+        public void IsValidLatitude_ValidValues_ReturnsTrue(string latitude)
+        {
+            // Arrange
+            ILatitudeValidator validator = new LatitudeValidator();
+            bool expected = true;
+
+            // Act
+            bool actual = validator.IsValidLatitude(latitude);
+
+            // Assert
+            Assert.Equal(expected, actual);
+        }
     }
 }
