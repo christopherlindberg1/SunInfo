@@ -89,7 +89,8 @@ namespace SunInfoWpf
 
         private void DisplaySunInfo(SunDataModel sunDataModel)
         {
-
+            textBlockSunrise.Text = $"{ SunDataModel.Sunrise.ToLongTimeString() } UTC";
+            textBlockSunset.Text = $"{ SunDataModel.Sunset.ToLongTimeString() } UTC";
         }
 
         private async void btnGetSunInfo_Click(object sender, RoutedEventArgs e)
@@ -112,8 +113,8 @@ namespace SunInfoWpf
                 textBoxLatitude.Text,
                 textBoxLongitude.Text,
                 datePickerDate.SelectedDate);
-        
-            
+
+            DisplaySunInfo(SunDataModel);
         }
 
         private void btnGetGeoLocation_Click(object sender, RoutedEventArgs e)
