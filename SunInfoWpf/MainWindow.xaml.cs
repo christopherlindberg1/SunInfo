@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Text.RegularExpressions;
 using CoreLibrary;
+using CoreLibrary.ApiClients;
+using CoreLibrary.Models;
 
 namespace SunInfoWpf
 {
@@ -25,25 +27,34 @@ namespace SunInfoWpf
         private ILatitudeValidator _latitudeValidator;
         private ILongitudeValidator _longitudeValidator;
         private IErrorMessageHandler _errorMessageHandler;
+        //private IApiHelper _apiHelper;
+        //private ISunApiClient _sunApiClient;
+
+        public SunDataModel SunDataModel { get; set; }
 
         public MainWindow(
             ILatitudeValidator latValidator,
             ILongitudeValidator longValidator,
             IErrorMessageHandler errorMessageHandler)
+            //IApiHelper apiHelper,
+            //ISunApiClient sunApiClient)
         {
             InitializeComponent();
 
             _latitudeValidator = latValidator;
             _longitudeValidator = longValidator;
             _errorMessageHandler = errorMessageHandler;
+            //_apiHelper = apiHelper;
+            //_sunApiClient = sunApiClient;
         }
 
         private bool ValidateUserInput()
         {
             bool latitudeOk = ValidateLatitude();
             bool longitudeOk = ValidateLongitude();
+            bool dateOk = ValidateDate();
 
-            return latitudeOk && longitudeOk;
+            return latitudeOk && longitudeOk && ValidateDate();
         }
 
         private bool ValidateLatitude()
@@ -70,7 +81,18 @@ namespace SunInfoWpf
             return isValid;
         }
 
-        private void btnGetSunInfo_Click(object sender, RoutedEventArgs e)
+        private bool ValidateDate()
+        {
+            // No particular validation needed atm.
+            return true;
+        }
+
+        private void DisplaySunInfo(SunDataModel sunDataModel)
+        {
+
+        }
+
+        private async void btnGetSunInfo_Click(object sender, RoutedEventArgs e)
         {
             if (ValidateUserInput() == false)
             {
@@ -82,6 +104,21 @@ namespace SunInfoWpf
 
                 return;
             }
+
+            IApiHelper apiHelper = new ApiHelper();
+            ISunApiClient sunApiClient = new SunApiClient(apiHelper);
+
+            SunDataModel = await sunApiClient.GetSunInformation(
+                textBoxLatitude.Text,
+                textBoxLongitude.Text,
+                datePickerDate.SelectedDate);
+        
+            
+        }
+
+        private void btnGetGeoLocation_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
