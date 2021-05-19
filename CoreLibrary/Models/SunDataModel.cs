@@ -4,7 +4,9 @@ using System.Text;
 
 namespace CoreLibrary.Models
 {
-    class SunDataModel
+    public class SunDataModel
     {
+        public DateTime Sunrise { get; set; }
+        public DateTime Sunset { get; set; }
     }
 }
