@@ -76,17 +76,23 @@
         </StackPanel>
 
         <!--Results-->
-        <StackPanel Grid.Row="1" Grid.Column="1" Margin="25 0 10 0" >
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="25 0 10 0">
             <TextBlock Text="Results"  FontSize="24" TextWrapping="Wrap"/>
 
-            <StackPanel Margin="0 15 0 0" Orientation="Horizontal">
-                <TextBlock Text="Sunrise: " FontSize="16" />
-                <TextBlock x:Name="textBlockSunrise" Text="" FontSize="16" />
+            <StackPanel x:Name="stackPanelLoadingAnimation">
+                <Image Source="https://gifimage.net/wp-content/uploads/2017/08/loading-animated-gif-1.gif" />
             </StackPanel>
 
-            <StackPanel Margin="0 15 0 0" Orientation="Horizontal">
-                <TextBlock Text="Sunset: " FontSize="16" />
-                <TextBlock x:Name="textBlockSunset" Text="" FontSize="16" />
+            <StackPanel x:Name="stackPanelResults">
+                <StackPanel Margin="0 15 0 0" Orientation="Horizontal">
+                    <TextBlock Text="Sunrise: " FontSize="16" />
+                    <TextBlock x:Name="textBlockSunrise" Text="" FontSize="16" />
+                </StackPanel>
+
+                <StackPanel Margin="0 15 0 0" Orientation="Horizontal">
+                    <TextBlock Text="Sunset: " FontSize="16" />
+                    <TextBlock x:Name="textBlockSunset" Text="" FontSize="16" />
+                </StackPanel>
             </StackPanel>
         </StackPanel>
     </Grid>
