@@ -10,10 +10,7 @@ namespace SunInfoWpf
         private bool _hasSentMessage = false;
 
 
-        private List<string> Messages
-        {
-            get => this._messages;
-        }
+        private List<string> Messages => _messages;
 
 
         /// <summary>
@@ -21,9 +18,9 @@ namespace SunInfoWpf
         /// </summary>
         private bool HasSentMessage
         {
-            get => this._hasSentMessage;
+            get => _hasSentMessage;
 
-            set => this._hasSentMessage = value;
+            set => _hasSentMessage = value;
         }
 
         /// <summary>
@@ -37,13 +34,13 @@ namespace SunInfoWpf
                 throw new ArgumentNullException("Message", "Message cannot be null or white space");
             }
 
-            if (this.HasSentMessage)
+            if (HasSentMessage)
             {
-                this.Messages.Clear();
-                this.HasSentMessage = false;
+                Messages.Clear();
+                HasSentMessage = false;
             }
 
-            this.Messages.Add(message);
+            Messages.Add(message);
         }
 
         /// <summary>
@@ -54,12 +51,12 @@ namespace SunInfoWpf
         {
             StringBuilder messageBuilder = new StringBuilder();
 
-            foreach (string message in this.Messages)
+            foreach (string message in Messages)
             {
                 messageBuilder.Append(message + "\n");
             }
 
-            this.HasSentMessage = true;
+            HasSentMessage = true;
             return messageBuilder.ToString();
         }
     }

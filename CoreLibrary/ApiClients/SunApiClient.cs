@@ -34,7 +34,6 @@ namespace CoreLibrary.ApiClients
                 {
                     throw new InvalidOperationException(response.ReasonPhrase);
                 }
-
             }
         }
 
